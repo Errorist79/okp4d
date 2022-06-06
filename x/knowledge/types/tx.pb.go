@@ -137,6 +137,7 @@ func (m *MsgBangDataspaceResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgBangDataspaceResponse proto.InternalMessageInfo
 
+// MsgTriggerService represents a message to trigger a new Service execution in the knowledge space
 type MsgTriggerService struct {
 	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
 	Uri     string `protobuf:"bytes,2,opt,name=uri,proto3" json:"uri,omitempty"`
@@ -189,6 +190,7 @@ func (m *MsgTriggerService) GetUri() string {
 	return ""
 }
 
+// MsgTriggerServiceResponse is the response given after a successful trigger Service
 type MsgTriggerServiceResponse struct {
 }
 
@@ -271,6 +273,7 @@ const _ = grpc.SupportPackageIsVersion4
 type MsgClient interface {
 	// BangDataspace defines a method for creating a new Dataspace in the knowledge space.
 	BangDataspace(ctx context.Context, in *MsgBangDataspace, opts ...grpc.CallOption) (*MsgBangDataspaceResponse, error)
+	// TriggerService defines a method to trigger a new Service execution in the knowledge space.
 	TriggerService(ctx context.Context, in *MsgTriggerService, opts ...grpc.CallOption) (*MsgTriggerServiceResponse, error)
 }
 
@@ -304,6 +307,7 @@ func (c *msgClient) TriggerService(ctx context.Context, in *MsgTriggerService, o
 type MsgServer interface {
 	// BangDataspace defines a method for creating a new Dataspace in the knowledge space.
 	BangDataspace(context.Context, *MsgBangDataspace) (*MsgBangDataspaceResponse, error)
+	// TriggerService defines a method to trigger a new Service execution in the knowledge space.
 	TriggerService(context.Context, *MsgTriggerService) (*MsgTriggerServiceResponse, error)
 }
 
